@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .headtext {
+    @apply text-2xl font-medium text-center mb-10;
+  }
+}
