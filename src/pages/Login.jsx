@@ -4,18 +4,30 @@ import { ButtonPrimary, Or, SigninGithub, SigninGoogle } from "../components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import eye from "../assets/images/eye.png";
+import axios from "axios";
 
 const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [msg, setMsg] = useState("");
 
-  const onSubmit = (data) => {
-    console.log(data); // submit form data to your backend here
+  const onSubmit = async (data) => {
+    const url = import.meta.env.VITE_BACKEND_URL;
+    try {
+      const response = await axios.post(`${url}/v1/auth/login`, {
+        ...data,
+      });
+      console.log(response.data.response.data.detail);
+      setMsg(response.data.response.data.detail);
+    } catch (error) {
+      setMsg(error.response.data.detail);
+      console.log(error);
+    }
   };
 
   return (
@@ -59,7 +71,7 @@ const Login = () => {
                 )}
               </div>
               <div
-                className={`flex items-center px-4 py-2 rounded-md border has-[:focus]:ring-1 ring-blue-600 border-gray-300 focus:outline-none  ${
+                className={`flex items-center px-4 py-2 rounded-md border has-[:focus]:ring-1 ring-blue-600 border-gray-200 focus:outline-none  ${
                   errors.password && "border-red-500"
                 }`}
               >
@@ -96,9 +108,12 @@ const Login = () => {
                 Forgot Password?
               </Link>
               <div className="flex flex-col space-y-2">
-                <ButtonPrimary type="submit">Log in to Qencode</ButtonPrimary>
+                <ButtonPrimary disabled={isSubmitting} type="submit">
+                  Log in to Qencode
+                </ButtonPrimary>
               </div>
             </div>
+            <p className="text-sm text-red-500 mt-4">{msg}</p>
           </div>
         </form>
       </div>

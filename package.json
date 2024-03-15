@@ -1,5 +1,5 @@
 {
-  "name": "id-app",
+  "name": "qencode-frontend-test",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,6 +12,9 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@reduxjs/toolkit": "^2.2.1",
+    "@tanstack/react-query": "^5.25.0",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

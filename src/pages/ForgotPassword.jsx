@@ -2,16 +2,30 @@ import { useForm } from "react-hook-form";
 import logo from "../assets/images/logo.png";
 import { ButtonPrimary, ButtonSecondary } from "../components";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
 
-const Login2 = () => {
+const ForgotPassword = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data); // submit form data to your backend here
+  const [msg, setMsg] = useState("");
+
+  const onSubmit = async (data) => {
+    const url = import.meta.env.VITE_BACKEND_URL;
+    try {
+      const response = await axios.post(`${url}/v1/auth/password-reset`, {
+        ...data,
+      });
+      console.log(response.data.detail);
+      setMsg(response.data.detail);
+    } catch (error) {
+      setMsg(error.response.data.detail);
+      console.log(error);
+    }
   };
 
   return (
@@ -50,13 +64,16 @@ const Login2 = () => {
 
               <div className="flex flex-col gap-3">
                 <div className="flex flex-col space-y-2">
-                  <ButtonPrimary type="submit">Send</ButtonPrimary>
+                  <ButtonPrimary disabled={isSubmitting} type="submit">
+                    Send
+                  </ButtonPrimary>
                 </div>
                 <Link to="/login" className="flex flex-col space-y-2">
                   <ButtonSecondary type="submit">Cancel</ButtonSecondary>
                 </Link>
               </div>
             </div>
+            <p className="text-sm text-red-500 mt-3">{msg}</p>
           </div>
         </form>
       </div>
@@ -64,4 +81,4 @@ const Login2 = () => {
   );
 };
 
-export default Login2;
+export default ForgotPassword;

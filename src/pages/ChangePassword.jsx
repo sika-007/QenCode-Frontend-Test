@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ButtonPrimary } from "../components";
 import { useState } from "react";
 import { z } from "zod";
+import axios from "axios";
 
 const schema = z
   .object({
@@ -19,14 +20,31 @@ const schema = z
 const ChangePassword = () => {
   const {
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     control,
   } = useForm({ resolver: zodResolver(schema) });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [msg, setMsg] = useState("");
 
-  const onSubmit = (data) => {
-    console.log(data); // submit form data to your backend here
+  const onSubmit = async (data) => {
+    const url = import.meta.env.VITE_BACKEND_URL;
+    try {
+      const response = await axios.post(`${url}/v1/auth/password-set`, {
+        token: "astringthatworks", // This value is supposed to come from local storage
+        secret: import.meta.env.VITE_QENCODE_SECRET,
+        password: data.password,
+        password_confirm: data.confirmPassword,
+      });
+      console.log(response.data.detail);
+      setMsg(response.data.detail);
+    } catch (error) {
+      setMsg(error.response.data.detail[0].error);
+      if (typeof error.response.data.detail === "string") {
+        setMsg(error.response.data.detail);
+      }
+      console.log(error);
+    }
   };
 
   return (
@@ -106,8 +124,11 @@ const ChangePassword = () => {
               )}
             </div>
             <div className="flex flex-col space-y-2 w-full">
-              <ButtonPrimary type="submit">Log in to Qencode</ButtonPrimary>
+              <ButtonPrimary disabled={isSubmitting} type="submit">
+                Reset Password
+              </ButtonPrimary>
             </div>
+            <p className="text-sm text-red-500 mt-3">{msg}</p>
           </div>
         </form>
       </div>
