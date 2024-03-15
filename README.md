@@ -1,8 +1,18 @@
-# React + Vite
+# Quencode Frontend Test
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hosted on [https://qencode-nsikak.netlify.app]()
 
-Currently, two official plugins are available:
+### Stack used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- TailwindCSS
+- React Router
+- Axios
+- zod
+- React hook form
+
+### Routes
+
+- Default - /login - ([https://qencode-nsikak.netlify.app/login]())
+- Forgot Password - /forgot-password - ([https://qencode-nsikak.netlify.app/forgot-password]())
+- Change Password - /change-password - ([https://qencode-nsikak.netlify.app/change-password]())
