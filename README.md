@@ -3,7 +3,7 @@
 Hosted on [https://qencode-sika.netlify.app
 ](qencode-sika.netlify.app "Login")
 
-### Setup Instructions
+### Setup Instructio
 
 - clone this repo by using the following coomand: `git clone https://github.com/sika-007/QenCode-Frontend-Test.git`.
 - navigate to the project's directory in the terminal or open it in vscode
@@ -12,12 +12,12 @@ Hosted on [https://qencode-sika.netlify.app
 
 ### Stack used
 
-- React
-- TailwindCSS
-- React Router
-- Axios
-- zod
-- React hook form
+1.  React
+1.  TailwindCSS
+1.  React Router
+1.  Axios
+1.  zod
+1.  React hook form
 
 ### Routes
 

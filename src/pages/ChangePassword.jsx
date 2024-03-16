@@ -49,13 +49,13 @@ const ChangePassword = () => {
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <div className="py-14 w-[500px]">
+      <div className="py-14 px-4 w-[500px]">
         <div className="mb-5">
           <img src={logo} className="mx-auto" alt="logo" />
         </div>
         <h1 className="headtext">Create new Password</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="h-full w-full">
-          <div className="login-form flex flex-col items-center justify-center pb-12 rounded-lg shadow-md h-full px-20 gap-3">
+          <div className="login-form flex flex-col items-center justify-center pb-12 rounded-lg shadow-md h-full px-10 md:px-20 gap-3">
             <div className="flex flex-col w-full mt-2">
               <div
                 className={`flex items-center px-4 py-2 rounded-md border has-[:focus]:ring-1 ring-blue-600 border-gray-300 focus:outline-none  ${
