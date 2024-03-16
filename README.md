@@ -1,6 +1,14 @@
 # Quencode Frontend Test
 
-Hosted on [https://qencode-sika.netlify.app](qencode-sika.netlify.app "Login")
+Hosted on [https://qencode-sika.netlify.app
+](qencode-sika.netlify.app "Login")
+
+### Setup Instructions
+
+- clone this repo by using the following coomand: `git clone https://github.com/sika-007/QenCode-Frontend-Test.git`.
+- navigate to the project's directory in the terminal or open it in vscode
+- `npm install` in the root directory to install all dependencies
+- next `npm run dev` to run the application locally
 
 ### Stack used
 
