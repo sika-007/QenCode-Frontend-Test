@@ -38,7 +38,7 @@ const Login = () => {
         </div>
         <h1 className="headtext">Log in to your account</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="h-full w-full">
-          <div className="login-form flex flex-col items-center justify-center pb-12 rounded-lg shadow-md h-full px-10 md:px-20">
+          <div className="login-form flex flex-col items-center justify-center py-8 rounded-lg shadow-md h-full px-10 md:px-20">
             <div className="flex items-center justify-center gap-4 my-3 w-full">
               <SigninGoogle />
               <SigninGithub />
@@ -90,7 +90,10 @@ const Login = () => {
                     errors.password && "border-red-500"
                   }`}
                 />
-                <div onClick={() => setShowPassword((prev) => !prev)}>
+                <div
+                  className="w-5 h-5"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                >
                   <img src={eye} alt="see" />
                 </div>
               </div>
